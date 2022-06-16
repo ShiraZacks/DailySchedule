@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Schedule</title>
+    <style>
+        body, html {
+          height: 100%;
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        .hero-image {
+          background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("aPhoto.jpeg");
+          height: 75%;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          position: relative;
+        }
+        
+        .hero-text {
+          text-align: center;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          color: white;
+        }
+        
+        .hero-text button {
+          border: none;
+          outline: 0;
+          display: inline-block;
+          padding: 5px 5px;
+          color: black;
+          background-color: #ddd;
+          text-align: center;
+          cursor: pointer;
+        }
+        
+        .hero-text button:hover {
+          background-color: #555;
+          color: white;
+        }
+        table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.divCenter {
+  text-align: center;
+}
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+        </style>
+        <script defer src = "JSp5.js"></script>
+</head>
+<body>
+    <div class="hero-image">
+        <div class="hero-text">
+          <h2 style="font-size:50px">My Schedule</h2>
+          <div id="error"></div>
+    <form id= "form" action= "/" method="GET">
+        <div>
+            <label for="name">Name: </label>
+            <input id="name" name="name" type="text" required>
+            <button onclick= "inputName()" type = "submit" id = "nameBtn">Submit</button>
+        </div>
+        <br>
+        <div>
+            <label for="morningAction">Mornings(8 AM to to 12 PM): </label>
+            <input id="morningAction" name="morningAction" type="text" required>
+        </div>
+        <div>
+            <label for="SunMorning">Sunday</label>
+            <input id="SunMorning" name="daysOfWeek" type="checkbox" >
+            <label for="MonMorning">Monday</label>
+            <input id="MonMorning" name="daysOfWeek" type="checkbox" >
+            <label for="TuesMorning">Tuesday</label>
+            <input id="TuesMorning" name="daysOfWeek" type="checkbox" >
+            <label for="WedMorning">Wednesday</label>
+            <input id="WedMorning" name="daysOfWeek" type="checkbox" >
+            <label for="ThursMorning">Thursday</label>
+            <input id="ThursMorning" name="daysOfWeek" type="checkbox" >
+            <label for="FriMorning">Friday</label>
+            <input id="FriMorning" name="daysOfWeek" type="checkbox" >
+            <label for="SatMorning">Saturday</label>
+            <input id="SatMorning" name="daysOfWeek" type="checkbox" >
+            <input type="button" onclick="inputMorning()" id="addMorning" value="Submit">
+        </div>
+        
+        <div>
+            <label for="afternoonAction">Afternoons (12 PM to 4 PM): </label>
+            <input id="afternoonAction" name="afternoonAction" type="text" required>
+        </div>
+        <div>
+            <label for="SunAfternoon">Sunday</label>
+            <input id="SunAfternoon" name="daysOfWeek" type="checkbox" >
+            <label for="MonAfternoon">Monday</label>
+            <input id="MonAfternoon" name="daysOfWeek" type="checkbox" >
+            <label for="TuesAfternoon">Tuesday</label>
+            <input id="TuesAfternoon" name="daysOfWeek" type="checkbox" >
+            <label for="WedAfternoon">Wednesday</label>
+            <input id="WedAfternoon" name="daysOfWeek" type="checkbox">
+            <label for="ThursAfternoon">Thursday</label>
+            <input id="ThursAfternoon" name="daysOfWeek" type="checkbox" >
+            <label for="FriAfternoon">Friday</label>
+            <input id="FriAfternoon" name="daysOfWeek" type="checkbox" >
+            <label for="SatAfternoon">Saturday</label>
+            <input id="SatAfternoon" name="daysOfWeek" type="checkbox" >
+            <input type="button" onclick="inputAfternoon()" id="addAfternoon" value="Submit">
+        </div>
+
+        <div>
+            <label for="eveningAction">Evenings (4 PM to 8 PM): </label>
+            <input id="eveningAction" name="eveningAction" type="text" required>
+        </div>
+        <div>
+
+        <!--still needs to change id names-->
+            <label for="SunEvening">Sunday</label>
+            <input id="SunEvening" name="daysOfWeek" type="checkbox" >
+            <label for="MonEvening">Monday</label>
+            <input id="MonEvening" name="daysOfWeek" type="checkbox" >
+            <label for="TuesEvening">Tuesday</label>
+            <input id="TuesEvening" name="daysOfWeek" type="checkbox" >
+            <label for="WedEvening">Wednesday</label>
+            <input id="WedEvening" name="daysOfWeek" type="checkbox" >
+            <label for="ThursEvening">Thursday</label>
+            <input id="ThursEvening" name="daysOfWeek" type="checkbox" >
+            <label for="FriEvening">Friday</label>
+            <input id="FriEvening" name="daysOfWeek" type="checkbox" >
+            <label for="SatEvening">Saturday</label>
+            <input id="SatEvening" name="daysOfWeek" type="checkbox" >
+            <input type="button" onclick="inputEvening()" id="addEvening" value="Submit">
+        </div>
+
+        <div>
+            <label for="nightAction">Nights(8 PM to 12 AM): </label>
+            <!-- leave required out first-->
+            <input id="nightAction" name="nightAction" type ="text" required>
+        </div>
+        <div> <!--still needs to change id names-->
+            <label for="SunNight">Sunday</label>
+            <input id="SunNight" name="daysOfWeek" type="checkbox">
+            <label for="MonNight">Monday</label>
+            <input id="MonNight" name="daysOfWeek" type="checkbox">
+            <label for="TuesNight">Tuesday</label>
+            <input id="TuesNight" name="daysOfWeek" type="checkbox">
+            <label for="WedNight">Wednesday</label>
+            <input id="WedNight" name="daysOfWeek" type="checkbox">
+            <label for="ThursNight">Thursday</label>
+            <input id="ThursNight" name="daysOfWeek" type="checkbox">
+            <label for="FriNight">Friday</label>
+            <input id="FriNight" name="daysOfWeek" type="checkbox">
+            <label for="SatNight">Saturday</label>
+            <input id="SatNight" name="daysOfWeek" type="checkbox">
+            <input type="button" onclick="inputNight()" id="addNight" value="Submit">
+        </div>
+    </form>
+    </div>
+    </div>
+      <table>
+            <tr>
+                <th id= here> </th>
+                <th>Sunday</th>
+                <th>Monday</th>
+                <th>Tuesday</th>
+                <th>Wednesday</th>
+                <th>Thursday</th>
+                <th>Friday</th>
+                <th>Saturday</th>
+            </tr>
+            <tr>
+                <td>Mornings</td>
+                <td id=1.1 name = "a"></td><td id=1.2 name = "a"></td><td id=1.3></td><td id=1.4></td><td id=1.5></td><td id=1.6></td><td id=1.7></td>
+            </tr>
+            <tr>
+                <td>Afternoons</td>
+                <td id=2.1></td><td id=2.2></td><td id=2.3></td><td id=2.4></td><td id=2.5></td><td id=2.6></td><td id=2.7></td>
+            </tr>
+            <tr>
+                <td>Evenings</td>
+                <td id=3.1></td><td id=3.2></td><td id=3.3></td><td id=3.4></td><td id=3.5></td><td id=3.6></td><td id=3.7></td>
+            </tr>
+            <tr>
+                <td>Nights</td>
+                <td id=4.1></td><td id=4.2></td><td id=4.3></td><td id=4.4></td><td id=4.5></td><td id=4.6></td><td id=4.7></td>
+            </tr>
+      </table>
+      <p></p>
+      <div class ="divCenter">
+      <input type="button" id ="resultsBtn" onclick="getMorningResults(), getAfternoonResults(), getEveningResults(), getNightResults()" value= "Click me!">
+      <h3 id="mResults"></h3>
+      <h3 id="aResults"></h3>
+      <h3 id="eResults"></h3>
+      <h3 id="nResults"></h3>
+    </div>
+      </div>
+</body>
+</html>
